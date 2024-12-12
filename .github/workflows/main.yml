@@ -27,7 +27,8 @@ jobs:
 
 
     - name: Publish the project
-      run: dotnet publish DailyPlanner.sln --configuration Release --runtime win-x64 --output ./publish
+      run: dotnet publish DailyPlanner.sln --configuration Release --runtime win-x64
+
 
 
 
