@@ -26,8 +26,9 @@ jobs:
       run: dotnet restore --runtime win-x64
 
 
-    - name: Build the project
-      run: dotnet build DailyPlanner.sln --configuration Release --arch x64
+    - name: Publish the project
+      run: dotnet publish DailyPlanner.sln --configuration Release --runtime win-x64 --output ./publish
+
 
 
     - name: Run static code analysis with StyleCop
