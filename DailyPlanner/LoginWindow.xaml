@@ -1,0 +1,25 @@
+﻿<Window x:Class="DailyPlanner.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyPlanner"
+        mc:Ignorable="d"
+        Icon="dailyPlanner.png"
+        Title="Авторизация" Height="400" Width="400">
+    
+    <Grid Background="#000">
+        <Border>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Foreground="#fff" HorizontalAlignment="Center" FontSize="17">
+                    Вход в аккаунт
+                </TextBlock>
+                <Label Foreground="#fff" Margin="40 0 0 0">Логин</Label>
+                <TextBox x:Name="login" TextAlignment="Center" FontWeight="DemiBold" FontSize="18" Background="Gray" Foreground="#fff" Margin="40 0 40 50"></TextBox>
+                <Label Foreground="#fff" Margin="40 0 0 0">Пароль</Label>
+                <PasswordBox x:Name="password" FontWeight="DemiBold" FontSize="18" Background="Gray" Foreground="#fff" Margin="40 0 40 50"></PasswordBox>
+                <Button Click="Button_Click" Background="BlueViolet" Height="30" Width="200" Foreground="#fff">Войти</Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
