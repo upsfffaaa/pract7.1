@@ -1,0 +1,50 @@
+name: .NET Build and Syntax Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build the project
+      run: dotnet build DailyPlanner.sln --configuration Release
+
+    - name: Run static code analysis with StyleCop
+      run: dotnet build DailyPlanner.sln --configuration Release /p:RunCodeAnalysis=true
+
+    - name: Run tests
+      run: dotnet test DailyPlanner.sln --configuration Release
+
+    - name: Publish results
+      run: |
+        echo "Публикуем отчеты о тестах и ошибках"
+        mkdir -p reports
+        # Сохраняем отчеты о тестах
+        mv ./TestResults/*.xml reports/
+        # Пример для статического анализа (если используется StyleCop или SonarCloud)
+        mv ./stylecop.json reports/
+      continue-on-error: true
+
+    - name: Upload reports to GitHub
+      uses: actions/upload-artifact@v2
+      with:
+        name: reports
+        path: reports
